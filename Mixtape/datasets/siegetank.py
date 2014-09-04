@@ -61,7 +61,7 @@ def strip_waters(trajectory):
     stripped_trajectory = trajectory.atom_slice(atoms_to_keep)
     return stripped_trajectory
 
-def fetch_siegetank_target(target_token, login_token, data_home=None, download_if_missing=True, sync_seeds=False):
+def fetch_siegetank_target(target_token, login_token, data_home=None, download_if_missing=True, sync_seeds=False, strip_solvent=True):
     """Retrieve data from SiegeTank SCV.
 
     Parameters
@@ -83,9 +83,13 @@ def fetch_siegetank_target(target_token, login_token, data_home=None, download_i
     sync_seeds : optional, False by default
         If True, will sync initial seeds as well.
 
+    strip_solvent : optional, True by default
+        If True, solvent will be stripped from the trajectories that are retrieved.
+
     Notes
     -----
     The siegetank package must be installed.
+
     """
 
     import siegetank
