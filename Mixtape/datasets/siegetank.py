@@ -61,7 +61,7 @@ def strip_waters(trajectory):
     stripped_trajectory = trajectory.atom_slice(atoms_to_keep)
     return stripped_trajectory
 
-def fetch_siegetank_target(target_token, login_token, data_home=None, download_if_missing=True, sync_seeds=False, strip_solvent=True):
+def fetch_siegetank_target(target_token, login_token, data_home=None, strip_solvent=True, sync_seeds=False):
     """Retrieve data from SiegeTank SCV.
 
     Parameters
@@ -76,15 +76,11 @@ def fetch_siegetank_target(target_token, login_token, data_home=None, download_i
         Specify another download and cache folder for the datasets. By default
         all mixtape data is stored in '~/mixtape_data' subfolders.
 
-    download_if_missing: optional, True by default
-        If False, raise a IOError if the data is not locally available
-        instead of trying to download the data from the source site.
+    strip_solvent : optional, True by default
+        If True, solvent will be stripped from the trajectories that are retrieved.
 
     sync_seeds : optional, False by default
         If True, will sync initial seeds as well.
-
-    strip_solvent : optional, True by default
-        If True, solvent will be stripped from the trajectories that are retrieved.
 
     Notes
     -----
